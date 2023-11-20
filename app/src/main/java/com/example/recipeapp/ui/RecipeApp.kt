@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -74,6 +75,17 @@ fun RecipeApp(context: Context, viewModel: RecipeViewModel = viewModel(factory =
         // Recipe Details
         selectedRecipe?.let { recipe ->
             RecipeDetailsCard(recipe = recipe)
+        }
+
+        // Error message
+        val errorMessage = viewModel.errorMessage.value
+        if (!errorMessage.isNullOrBlank()) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = errorMessage,
+                color = Color.Red,
+                modifier = Modifier.padding(16.dp)
+            )
         }
     }
 }

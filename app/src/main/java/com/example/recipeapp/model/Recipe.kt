@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/recipeapp/model/Recipe.kt
 package com.example.recipeapp.model
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -19,7 +18,7 @@ data class Recipe(
 )
 
 @Serializable
-data class Response(val results: List<Recipe>)
+data class RecipeList(val results: List<Recipe>)
 
 @Serializable
 data class Request(

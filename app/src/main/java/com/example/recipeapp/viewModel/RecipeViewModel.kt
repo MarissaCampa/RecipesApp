@@ -20,16 +20,28 @@ class RecipeViewModel(private val context: Context) : ViewModel() {
     private val _recipes = mutableStateOf<List<Recipe>>(emptyList())
     val recipes: State<List<Recipe>> = _recipes
 
+    // New state for error message
+    private val _errorMessage = mutableStateOf<String?>(null)
+    val errorMessage: State<String?> = _errorMessage
+
     // Function to perform the recipe search
     fun searchRecipes(query: String) {
         viewModelScope.launch {
             try {
                 val apiKey = ConfigReader.getApiKey(context)
-                val response = RecipesApi.retrofitService.searchRecipes(query, apiKey, CUSTOM_SEARCH_ENGINE_ID).results
-                _recipes.value = response
+                val response = RecipesApi.retrofitService.searchRecipes(query, apiKey, CUSTOM_SEARCH_ENGINE_ID)
+
+                // Check if the response is successful before processing it
+                if (response.isSuccessful) {
+                    // Assuming `results` is a property of the `Response` class
+                    val recipes = response.body()?.results ?: emptyList()
+                    _recipes.value = recipes
+                } else {
+                    _errorMessage.value = "Failed to retrieve recipes. Please try again."
+                }
             } catch (e: Exception) {
-                // Handle error
-                // You might want to show an error message to the user
+                // Handle exception
+                _errorMessage.value = "Exception: " + e.message
             }
         }
     }
