@@ -56,7 +56,7 @@ Users are able to create lists for grouping saved recipes into categories, for e
 This project was created for:
 #### [WWCode App Deploy Hackathon in Partnership with Google Play](https://hopin.com/events/wwcode-app-deploy/registration)
 
-![Event Image](https://hopin-prod-fe-page-builder.imgix.net/events/page_builder/000/431/139/original/2ba62a77-2398-4579-b7a2-e54dae8bd250.png?ixlib=rb-4.1.0&s=bd16fec9cf93a6456550246d022de4e5)
+![Event Image](https://hopin-prod-fe-page-builder.imgix.net/events/page_builder/000/431/139/original/2ba62a77-2398-4579-b7a2-e54dae8bd250.png)
 
 ## Authors
 
