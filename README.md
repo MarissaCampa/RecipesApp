@@ -2,14 +2,19 @@
 RecipeApp is a mobile application designed to provide users with a simple and intuitive way to discover and explore various recipes. The app utilizes the Google Search API to fetch recipe-related information based on user queries.
 
 ## Key Features:
-
 For the first version of this app, I focused on getting the following features: 
 
 ### Recipe Search:
 Users can enter keywords or queries in the search bar to find recipes. The app sends these queries to the Google Search API to retrieve relevant recipe information.
 
+<img src='https://github.com/MarissaCampa/RecipesApp/assets/3021010/d7dacfdf-3eb1-4359-a1eb-1d78b34254e1' width='200'>
+<img src='https://github.com/MarissaCampa/RecipesApp/assets/3021010/6f571aec-5d5f-43be-a9e8-98b2f4bf9f9e' width='200'>
+
 ### Recipe Display:
 The search results are displayed as a list of cards, each representing a specific recipe. Each card contains an image, title, and snippet of the recipe.
+
+<img src='https://github.com/MarissaCampa/RecipesApp/assets/3021010/68e1ed4e-5317-4444-89a5-35f485340a23' width='200'>
+<img src='https://github.com/MarissaCampa/RecipesApp/assets/3021010/db888d7d-40cf-4c1b-a315-61ee124b9e64' width='200'>
 
 ## Development Approach:
 
@@ -56,7 +61,7 @@ Users are able to create lists for grouping saved recipes into categories, for e
 This project was created for:
 #### [WWCode App Deploy Hackathon in Partnership with Google Play](https://hopin.com/events/wwcode-app-deploy/registration)
 
-![Event Image](https://hopin-prod-fe-page-builder.imgix.net/events/page_builder/000/431/139/original/2ba62a77-2398-4579-b7a2-e54dae8bd250.png)
+![image](https://github.com/MarissaCampa/RecipesApp/assets/3021010/74864f9b-94bf-4b33-821c-48ca89870aea)
 
 ## Authors
 
