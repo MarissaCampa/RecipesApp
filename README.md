@@ -63,6 +63,6 @@ This project was created for:
 
 ![image](https://github.com/MarissaCampa/RecipesApp/assets/3021010/74864f9b-94bf-4b33-821c-48ca89870aea)
 
-## Authors
+## Author
 
 - [Marissa Campa](https://github.com/MarissaCampa)
