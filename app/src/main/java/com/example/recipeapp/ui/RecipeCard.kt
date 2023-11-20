@@ -1,6 +1,5 @@
 package com.example.recipeapp.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -16,14 +15,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.recipeapp.R
-import com.example.recipeapp.model.Recipe
+import coil.compose.AsyncImage
+import com.example.recipeapp.model.Item
 
 @Composable
-fun RecipeCard(recipe: Recipe) {
+fun RecipeCard(recipe: Item) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -37,13 +35,13 @@ fun RecipeCard(recipe: Recipe) {
                 .background(MaterialTheme.colorScheme.background)
                 .clickable { /* Handle click on recipe item */ }
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.crepes), // Use your placeholder image
+            AsyncImage(
+                model = recipe.pagemap!!?.cseImage?.get(0)?.src,
                 contentDescription = null,
                 modifier = Modifier
-                    .height(180.dp)
-                    .fillMaxWidth()
-                    .clip(shape = MaterialTheme.shapes.medium),
+                        .height(180.dp)
+                        .fillMaxWidth()
+                        .clip(shape = MaterialTheme.shapes.medium),
                 contentScale = ContentScale.Crop
             )
 
@@ -75,9 +73,18 @@ fun RecipeCard(recipe: Recipe) {
 @Composable
 @Preview
 fun RecipeItemPreview() {
-    val sampleRecipe = Recipe(
+    val sampleRecipe = Item(
         title = "Sample Recipe",
-        snippet = "This is a sample recipe snippet. You can replace it with the actual recipe details."
+        snippet = "This is a sample recipe snippet. You can replace it with the actual recipe details.",
+        kind = "",
+        htmlTitle = "",
+        link = "",
+        displayLink = "",
+        htmlSnippet = "",
+        cacheId = "",
+        formattedUrl = "",
+        htmlFormattedUrl = "",
+        pagemap = null
     )
     RecipeCard(recipe = sampleRecipe)
 }

@@ -24,7 +24,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.recipeapp.model.Recipe
+import com.example.recipeapp.model.Item
 import com.example.recipeapp.ui.RecipeCard
 import com.example.recipeapp.ui.RecipeDetailsCard
 import com.example.recipeapp.viewModel.RecipeViewModel
@@ -37,7 +37,7 @@ import com.example.recipeapp.viewModel.RecipeViewModelFactory
 @Composable
 fun RecipeApp(context: Context, viewModel: RecipeViewModel = viewModel(factory = RecipeViewModelFactory(context))) {
     var query by remember { mutableStateOf("") }
-    var selectedRecipe by remember { mutableStateOf<Recipe?>(null) }
+    var selectedRecipe by remember { mutableStateOf<Item?>(null) }
 
     val recipes by viewModel.recipes
 

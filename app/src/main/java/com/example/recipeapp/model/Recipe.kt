@@ -3,22 +3,26 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Recipe(
-    val kind: String = "",
-    val title: String = "",
-    val htmlTitle: String = "",
-    val link: String = "",
-    val displayLink: String = "",
-    val snippet: String = "",
-    val htmlSnippet: String = "",
-    val cacheId: String? = "",
-    val formattedUrl: String = "",
-    val htmlFormattedUrl: String = ""
-//    val pagemap: Pagemap,
+data class Root(
+    val kind: String,
+    val url: Url,
+    val queries: Queries,
+    val context: Context,
+    val searchInformation: SearchInformation,
+    val items: List<Item>,
 )
 
 @Serializable
-data class RecipeList(val results: List<Recipe>)
+data class Url(
+    val type: String,
+    val template: String,
+)
+
+@Serializable
+data class Queries(
+    val request: List<Request>,
+    val nextPage: List<NextPage>,
+)
 
 @Serializable
 data class Request(
@@ -34,18 +38,59 @@ data class Request(
 )
 
 @Serializable
+data class NextPage(
+    val title: String,
+    val totalResults: String,
+    val searchTerms: String,
+    val count: Long,
+    val startIndex: Long,
+    val inputEncoding: String,
+    val outputEncoding: String,
+    val safe: String,
+    val cx: String,
+)
+
+@Serializable
+data class Context(
+    val title: String,
+)
+
+@Serializable
+data class SearchInformation(
+    val searchTime: Double,
+    val formattedSearchTime: String,
+    val totalResults: String,
+    val formattedTotalResults: String,
+)
+
+@Serializable
+data class Item(
+    val kind: String? = null,
+    val title: String,
+    val htmlTitle: String? = null,
+    val link: String? = null,
+    val displayLink: String? = null,
+    val snippet: String,
+    val htmlSnippet: String? = null,
+    val cacheId: String? = null,
+    val formattedUrl: String? = null,
+    val htmlFormattedUrl: String? = null,
+    val pagemap: Pagemap? = null,
+)
+
+@Serializable
 data class Pagemap(
     @SerialName("cse_thumbnail")
-    val cseThumbnail: List<CseThumbnail>?,
+    val cseThumbnail: List<CseThumbnail>? = null,
     val metatags: List<Metatag>,
     @SerialName("cse_image")
-    val cseImage: List<CseImage>?,
-    val hcard: List<Hcard>?,
-    val videoobject: List<Videoobject>?,
-    val speakablespecification: List<Speakablespecification>?,
-    val listitem: List<Listitem>?,
-//    @SerialName("BreadcrumbList")
-//    val breadcrumbList: List<Map<String, Any>>?,
+    val cseImage: List<CseImage>? = null,
+    val hcard: List<Hcard>? = null,
+    val videoobject: List<Videoobject>? = null,
+    val speakablespecification: List<Speakablespecification>? = null,
+    val listitem: List<Listitem>? = null,
+    @SerialName("BreadcrumbList")
+    val breadcrumbList: List<Listitem>? = null,
 )
 
 @Serializable
@@ -58,149 +103,149 @@ data class CseThumbnail(
 @Serializable
 data class Metatag(
     @SerialName("og:image")
-    val ogImage: String,
+    val ogImage: String? = null,
     @SerialName("og:type")
-    val ogType: String?,
+    val ogType: String? = null,
     @SerialName("article:published_time")
-    val articlePublishedTime: String?,
+    val articlePublishedTime: String? = null,
     @SerialName("og:image:width")
-    val ogImageWidth: String?,
+    val ogImageWidth: String? = null,
     @SerialName("og:site_name")
-    val ogSiteName: String?,
-    val author: String?,
+    val ogSiteName: String? = null,
+    val author: String? = null,
     @SerialName("og:title")
-    val ogTitle: String,
+    val ogTitle: String? = null,
     @SerialName("og:image:height")
-    val ogImageHeight: String?,
+    val ogImageHeight: String? = null,
     @SerialName("twitter:label1")
-    val twitterLabel1: String?,
+    val twitterLabel1: String? = null,
     @SerialName("slick:wpversion")
-    val slickWpversion: String?,
+    val slickWpversion: String? = null,
     @SerialName("twitter:label2")
-    val twitterLabel2: String?,
+    val twitterLabel2: String? = null,
     @SerialName("og:image:type")
-    val ogImageType: String?,
+    val ogImageType: String? = null,
     @SerialName("slick:category")
-    val slickCategory: String?,
+    val slickCategory: String? = null,
     @SerialName("og:description")
-    val ogDescription: String,
+    val ogDescription: String? = null,
     @SerialName("twitter:data1")
-    val twitterData1: String?,
+    val twitterData1: String? = null,
     @SerialName("twitter:data2")
-    val twitterData2: String?,
+    val twitterData2: String? = null,
     @SerialName("slick:group")
-    val slickGroup: String?,
+    val slickGroup: String? = null,
     @SerialName("pinterest-rich-pin")
-    val pinterestRichPin: String?,
+    val pinterestRichPin: String? = null,
     @SerialName("article:modified_time")
-    val articleModifiedTime: String?,
-    val viewport: String,
+    val articleModifiedTime: String? = null,
+    val viewport: String? = null,
     @SerialName("slick:wppostid")
-    val slickWppostid: String?,
+    val slickWppostid: String? = null,
     @SerialName("og:locale")
-    val ogLocale: String?,
+    val ogLocale: String? = null,
     @SerialName("og:url")
-    val ogUrl: String?,
+    val ogUrl: String? = null,
     @SerialName("slick:featured_image")
-    val slickFeaturedImage: String?,
+    val slickFeaturedImage: String? = null,
     @SerialName("p:domain_verify")
-    val pDomainVerify: String?,
+    val pDomainVerify: String? = null,
     @SerialName("twitter:card")
-    val twitterCard: String?,
+    val twitterCard: String? = null,
     @SerialName("msapplication-tileimage")
-    val msapplicationTileimage: String?,
+    val msapplicationTileimage: String? = null,
     @SerialName("twitter:creator")
-    val twitterCreator: String?,
+    val twitterCreator: String? = null,
     @SerialName("twitter:image")
-    val twitterImage: String?,
+    val twitterImage: String? = null,
     @SerialName("article:publisher")
-    val articlePublisher: String?,
+    val articlePublisher: String? = null,
     @SerialName("article_author")
-    val articleAuthor: String?,
+    val articleAuthor: String? = null,
     @SerialName("twitter:site")
-    val twitterSite: String?,
+    val twitterSite: String? = null,
     @SerialName("twitter:title")
-    val twitterTitle: String?,
+    val twitterTitle: String? = null,
     @SerialName("article_publisher")
-    val articlePublisher2: String?,
+    val articlePublisher2: String? = null,
     @SerialName("og:updated_time")
-    val ogUpdatedTime: String?,
+    val ogUpdatedTime: String? = null,
     @SerialName("article:author")
-    val articleAuthor2: String?,
+    val articleAuthor2: String? = null,
     @SerialName("fb:app_id")
-    val fbAppId: String?,
+    val fbAppId: String? = null,
     @SerialName("twitter:description")
-    val twitterDescription: String?,
+    val twitterDescription: String? = null,
     @SerialName("theme-color")
-    val themeColor: String?,
+    val themeColor: String? = null,
     @SerialName("sailthru.tags")
-    val sailthruTags: String?,
+    val sailthruTags: String? = null,
     @SerialName("sailthru.contenttype")
-    val sailthruContenttype: String?,
-    val title: String?,
+    val sailthruContenttype: String? = null,
+    val title: String? = null,
     @SerialName("next-head-count")
-    val nextHeadCount: String?,
+    val nextHeadCount: String? = null,
     @SerialName("msapplication-tap-highlight")
-    val msapplicationTapHighlight: String?,
+    val msapplicationTapHighlight: String? = null,
     @SerialName("sailthru.socialtitle")
-    val sailthruSocialtitle: String?,
+    val sailthruSocialtitle: String? = null,
     @SerialName("parsely-section")
-    val parselySection: String?,
+    val parselySection: String? = null,
     @SerialName("sailthru.date")
-    val sailthruDate: String?,
+    val sailthruDate: String? = null,
     @SerialName("x-ua-compatible")
-    val xUaCompatible: String?,
-    val thumbnail: String?,
+    val xUaCompatible: String? = null,
+    val thumbnail: String? = null,
     @SerialName("article:section")
-    val articleSection: String?,
-    val m1: String?,
-    val m2: String?,
+    val articleSection: String? = null,
+    val m1: String? = null,
+    val m2: String? = null,
     @SerialName("auto-publish")
-    val autoPublish: String?,
+    val autoPublish: String? = null,
     @SerialName("sailthru.image.thumb")
-    val sailthruImageThumb: String?,
+    val sailthruImageThumb: String? = null,
     @SerialName("sailthru.image.full")
-    val sailthruImageFull: String?,
+    val sailthruImageFull: String? = null,
     @SerialName("article:opinion")
-    val articleOpinion: String?,
+    val articleOpinion: String? = null,
     @SerialName("be:sdk")
-    val beSdk: String?,
+    val beSdk: String? = null,
     @SerialName("be:norm_url")
-    val beNormUrl: String?,
+    val beNormUrl: String? = null,
     @SerialName("be:capsule_url")
-    val beCapsuleUrl: String?,
+    val beCapsuleUrl: String? = null,
     @SerialName("be:api_dt")
-    val beApiDt: String?,
+    val beApiDt: String? = null,
     @SerialName("be:mod_dt")
-    val beModDt: String?,
+    val beModDt: String? = null,
     @SerialName("be:timer")
-    val beTimer: String?,
-    val position: String?,
+    val beTimer: String? = null,
+    val position: String? = null,
     @SerialName("be:orig_url")
-    val beOrigUrl: String?,
+    val beOrigUrl: String? = null,
     @SerialName("be:messages")
-    val beMessages: String?,
+    val beMessages: String? = null,
     @SerialName("norton-safeweb-site-verification")
-    val nortonSafewebSiteVerification: String?,
-    val onesignal: String?,
+    val nortonSafewebSiteVerification: String? = null,
+    val onesignal: String? = null,
     @SerialName("ahrefs-site-verification")
-    val ahrefsSiteVerification: String?,
+    val ahrefsSiteVerification: String? = null,
     @SerialName("msapplication-tilecolor")
-    val msapplicationTilecolor: String?,
+    val msapplicationTilecolor: String? = null,
     @SerialName("facebook-domain-verification")
-    val facebookDomainVerification: String?,
+    val facebookDomainVerification: String? = null,
     @SerialName("msapplication-square70x70logo")
-    val msapplicationSquare70x70logo: String?,
+    val msapplicationSquare70x70logo: String? = null,
     @SerialName("msapplication-wide310x150logo")
-    val msapplicationWide310x150logo: String?,
+    val msapplicationWide310x150logo: String? = null,
     @SerialName("msapplication-square310x310logo")
-    val msapplicationSquare310x310logo: String?,
+    val msapplicationSquare310x310logo: String? = null,
     @SerialName("msapplication-square150x150logo")
-    val msapplicationSquare150x150logo: String?,
+    val msapplicationSquare150x150logo: String? = null,
     @SerialName("fb:pages")
-    val fbPages: String?,
+    val fbPages: String? = null,
     @SerialName("parsely-tags")
-    val parselyTags: String?,
+    val parselyTags: String? = null,
 )
 
 @Serializable
@@ -211,7 +256,7 @@ data class CseImage(
 @Serializable
 data class Hcard(
     val fn: String,
-    val nickname: String?,
+    val nickname: String? = null,
 )
 
 @Serializable
@@ -230,7 +275,7 @@ data class Speakablespecification(
 
 @Serializable
 data class Listitem(
-    val item: String,
-    val name: String,
-    val position: String,
+    val item: String? = null,
+    val name: String? = null,
+    val position: String? = null,
 )

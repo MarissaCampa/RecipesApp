@@ -18,10 +18,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.recipeapp.R
-import com.example.recipeapp.model.Recipe
+import com.example.recipeapp.model.Item
 
 @Composable
-fun RecipeDetailsCard(recipe: Recipe) {
+fun RecipeDetailsCard(recipe: Item) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,9 +63,18 @@ fun RecipeDetailsCard(recipe: Recipe) {
 @Composable
 @Preview
 fun RecipeDetailsPreview() {
-    val sampleRecipe = Recipe(
+    val sampleRecipe = Item(
         title = "Sample Recipe",
-        snippet = "This is a sample recipe snippet. You can replace it with the actual recipe details."
+        snippet = "This is a sample recipe snippet. You can replace it with the actual recipe details.",
+        kind = "",
+        htmlTitle = "",
+        link = "",
+        displayLink = "",
+        htmlSnippet = "",
+        cacheId = "",
+        formattedUrl = "",
+        htmlFormattedUrl = "",
+        pagemap = null
     )
     RecipeDetailsCard(recipe = sampleRecipe)
 }

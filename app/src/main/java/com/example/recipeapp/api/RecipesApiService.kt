@@ -1,11 +1,10 @@
 package com.example.recipeapp.api
 
-import com.example.recipeapp.model.RecipeList
+import com.example.recipeapp.model.Root
 import com.example.recipeapp.utils.Constants
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -17,7 +16,7 @@ interface RecipesApiService {
         @Query("q") query: String,
         @Query("key") apiKey: String,
         @Query("cx") customSearchEngineId: String
-    ): Response<RecipeList>
+    ): Root
 }
 
 private val json = Json {

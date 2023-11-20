@@ -8,7 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.api.RecipesApi
-import com.example.recipeapp.model.Recipe
+import com.example.recipeapp.model.Item
+import com.example.recipeapp.model.Root
 import com.example.recipeapp.utils.Constants.CUSTOM_SEARCH_ENGINE_ID
 import kotlinx.coroutines.launch
 
@@ -17,8 +18,8 @@ class RecipeViewModel(private val context: Context) : ViewModel() {
     // LiveData to observe the list of recipes
     // We'll assume you're using LiveData, but you can also use State or MutableState in Compose
     // depending on your Compose version.
-    private val _recipes = mutableStateOf<List<Recipe>>(emptyList())
-    val recipes: State<List<Recipe>> = _recipes
+    private val _recipes = mutableStateOf<List<Item>>(emptyList())
+    val recipes: State<List<Item>> = _recipes
 
     // New state for error message
     private val _errorMessage = mutableStateOf<String?>(null)
@@ -29,17 +30,10 @@ class RecipeViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch {
             try {
                 val apiKey = ConfigReader.getApiKey(context)
-                val response = RecipesApi.retrofitService.searchRecipes(query, apiKey, CUSTOM_SEARCH_ENGINE_ID)
-
-                // Check if the response is successful before processing it
-                if (response.isSuccessful) {
-                    // Assuming `results` is a property of the `Response` class
-                    val recipes = response.body()?.results ?: emptyList()
-                    _recipes.value = recipes
-                } else {
-                    _errorMessage.value = "Failed to retrieve recipes. Please try again."
-                }
-            } catch (e: Exception) {
+                val response: Root
+                response = RecipesApi.retrofitService.searchRecipes(query, apiKey, CUSTOM_SEARCH_ENGINE_ID)
+                _recipes.value = response.items
+           } catch (e: Exception) {
                 // Handle exception
                 _errorMessage.value = "Exception: " + e.message
             }
