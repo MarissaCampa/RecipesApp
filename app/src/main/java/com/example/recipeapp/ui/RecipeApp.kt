@@ -60,12 +60,12 @@ fun RecipeApp(context: Context, viewModel: RecipeViewModel = viewModel(factory =
         var keyboardController = LocalSoftwareKeyboardController.current
         Text(
             text = "Recipe Finder",
-            style = MaterialTheme.typography.titleLarge.copy(
+            style = MaterialTheme.typography.headlineLarge.copy(
                 fontWeight = FontWeight.ExtraBold,
                 color = MaterialTheme.colorScheme.primary
             ),
             modifier = Modifier
-                .padding(20.dp)
+                .padding(top =  20.dp)
                 .align(Alignment.CenterHorizontally)
         )
 

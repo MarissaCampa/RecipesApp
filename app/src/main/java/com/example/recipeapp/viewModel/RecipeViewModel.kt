@@ -16,8 +16,6 @@ import kotlinx.coroutines.launch
 class RecipeViewModel(private val context: Context) : ViewModel() {
 
     // LiveData to observe the list of recipes
-    // We'll assume you're using LiveData, but you can also use State or MutableState in Compose
-    // depending on your Compose version.
     private val _recipes = mutableStateOf<List<Item>>(emptyList())
     val recipes: State<List<Item>> = _recipes
 
@@ -31,7 +29,8 @@ class RecipeViewModel(private val context: Context) : ViewModel() {
             try {
                 val apiKey = ConfigReader.getApiKey(context)
                 val response: Root
-                response = RecipesApi.retrofitService.searchRecipes(query, apiKey, CUSTOM_SEARCH_ENGINE_ID)
+                val recipeQuery = query + "recipe"
+                response = RecipesApi.retrofitService.searchRecipes(recipeQuery, apiKey, CUSTOM_SEARCH_ENGINE_ID)
                 _recipes.value = response.items
            } catch (e: Exception) {
                 // Handle exception
