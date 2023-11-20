@@ -26,13 +26,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    RecipeAppTheme {
-////        val recipesViewModel: RecipeViewModel = viewModel()
-//        RecipeApp(context = applicationContext)
-//    }
-//}
-
