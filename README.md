@@ -46,6 +46,18 @@ RecipeApp is a mobile application designed to provide users with a simple and in
     The app focuses on a simplified design with a clean and easy-to-navigate user interface.
     It aims to provide a quick and enjoyable recipe discovery experience for users.
 
+## About the API Key
+Since this app uses the Google Search API, it needs an API Key to make the network calls.
+
+I added my api key to a file `RecipeApp\app\src\main\res\raw\config.properties` like this:
+
+```
+// RecipeApp\app\src\main\res\raw\config.properties
+API_KEY=YOUR_API_KEY_HERE
+
+```
+And the key is accessed by the `ConfigReader.getApiKey(): String` function.
+
 ## Authors
 
 - [Marissa Campa](https://github.com/MarissaCampa)

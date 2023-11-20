@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/recipeapp/ui/RecipeViewModel.kt
 package com.example.recipeapp.viewModel
 
 import ConfigReader
@@ -6,6 +5,7 @@ import android.content.Context
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.api.RecipesApi
 import com.example.recipeapp.model.Recipe
@@ -32,5 +32,15 @@ class RecipeViewModel(private val context: Context) : ViewModel() {
                 // You might want to show an error message to the user
             }
         }
+    }
+}
+
+class RecipeViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(RecipeViewModel::class.java)) {
+            return RecipeViewModel(context) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

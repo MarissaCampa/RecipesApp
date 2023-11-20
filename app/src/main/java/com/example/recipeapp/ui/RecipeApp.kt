@@ -1,5 +1,6 @@
 package com.example.recipeapp
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,13 +27,14 @@ import com.example.recipeapp.model.Recipe
 import com.example.recipeapp.ui.RecipeCard
 import com.example.recipeapp.ui.RecipeDetailsCard
 import com.example.recipeapp.viewModel.RecipeViewModel
+import com.example.recipeapp.viewModel.RecipeViewModelFactory
 
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class,
     ExperimentalComposeUiApi::class
 )
 @Composable
-fun RecipeApp(viewModel: RecipeViewModel = viewModel()) {
+fun RecipeApp(context: Context, viewModel: RecipeViewModel = viewModel(factory = RecipeViewModelFactory(context))) {
     var query by remember { mutableStateOf("") }
     var selectedRecipe by remember { mutableStateOf<Recipe?>(null) }
 
