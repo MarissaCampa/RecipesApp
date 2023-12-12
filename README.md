@@ -1,6 +1,9 @@
 # RecipeApp: A Recipe Finder
 RecipeApp is a mobile application designed to provide users with a simple and intuitive way to discover and explore various recipes. The app utilizes the Google Search API to fetch recipe-related information based on user queries.
 
+## Presentation
+https://www.canva.com/design/DAF0wOopVf4/QnGUTsSPxEwkXeJu6JUbmw/view?utm_content=DAF0wOopVf4#6
+
 ## Key Features:
 For the first version of this app, I focused on getting the following features: 
 
@@ -62,6 +65,12 @@ This project was created for:
 #### [WWCode App Deploy Hackathon in Partnership with Google Play](https://hopin.com/events/wwcode-app-deploy/registration)
 
 ![image](https://github.com/MarissaCampa/RecipesApp/assets/3021010/74864f9b-94bf-4b33-821c-48ca89870aea)
+
+## Update
+*First place of the WWCode App Deploy Hackathon with Google Play*
+
+![hackathon_winners](https://github.com/MarissaCampa/RecipesApp/assets/3021010/7a1a067b-f4c1-4708-995e-72a72be47fb8)
+
 
 ## Author
 
